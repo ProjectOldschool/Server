@@ -15,7 +15,6 @@ import astraeus.game.model.entity.mob.player.collect.Equipment;
 import astraeus.game.model.entity.mob.player.skill.Skill;
 import astraeus.net.packet.out.ServerMessagePacket;
 import astraeus.util.StringUtils;
-import lombok.Getter;
 
 @SubscribesTo(ButtonActionEvent.class)
 public final class EmoteTab extends ButtonClick {
@@ -114,13 +113,10 @@ public final class EmoteTab extends ButtonClick {
       }
     }
 
-    @Getter
     private final int gfxId;
 
-    @Getter
     private final int animationId;
 
-    @Getter
     private final int buttonId;
 
     private Emote(int buttonId, int animationId, int gfxId) {
@@ -185,13 +181,9 @@ public final class EmoteTab extends ButtonClick {
     QUEST_POINT_CAPE(new int[] {9813, 9814}, 816, 4945, -1),
     ACHIEVEMENT_CAPE(new int[] {13069}, 323, 2709, -1);
 
-    @Getter
     private final int[] itemIds;
-    @Getter
     private final int gfxId;
-    @Getter
     private final int animationId;
-    @Getter
     private final int skillId;
 
     private Skillcape(int[] itemId, int gfxId, int animationId, int skillId) {
