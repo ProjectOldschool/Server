@@ -129,13 +129,25 @@ public final class EmoteTab extends ButtonClick {
       this.gfxId = gfxId;
     }
 
-    public static Optional<Emote> get(int buttonId) {
+    public int getGfxId() {
+		return gfxId;
+	}
+
+	public int getAnimationId() {
+		return animationId;
+	}
+
+	public static Optional<Emote> get(int buttonId) {
       return Optional.ofNullable(emotes.get(buttonId));
     }
 
     public static boolean isEmote(int buttonId) {
       return Arrays.stream(Emote.values()).anyMatch(it -> it.getButtonId() == buttonId);
     }
+
+	private int getButtonId() {
+		return buttonId;
+	}
 
   }
 
@@ -189,7 +201,19 @@ public final class EmoteTab extends ButtonClick {
       this.skillId = skillId;
     }
 
-    public static Optional<Skillcape> lookup(int id) {
+    public int getGfxId() {
+		return gfxId;
+	}
+
+	public int getAnimationId() {
+		return animationId;
+	}
+
+	public int getSkillId() {
+		return skillId;
+	}
+
+	public static Optional<Skillcape> lookup(int id) {
       for (Skillcape data : Skillcape.values()) {
         for (int index = 0; index < data.getItemIds().length; index++) {
           if (data.getItemIds()[index] == id) {
@@ -199,6 +223,10 @@ public final class EmoteTab extends ButtonClick {
       }
       return Optional.empty();
     }
+
+	private int[] getItemIds() {
+		return itemIds;
+	}
 
   }
 
