@@ -1,5 +1,9 @@
 package astraeus.net.packet.in;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import astraeus.game.model.entity.item.Item;
 import astraeus.game.model.entity.mob.player.Player;
 import astraeus.game.model.entity.mob.player.PlayerRights;
@@ -50,8 +54,8 @@ public final class DropItemPacket implements Receivable {
     }
 
     player.queuePacket(new AddGroundItemPacket(player.getPosition().copy(), item));
-    
-    GameObjects.getGroundItems().put(player.getPosition().copy(), new Item[]{item});
+
+    GameObjects.getGroundItems().put(player.getPosition().copy(), Arrays.asList(item));
 
     player.getInventory().remove(item);
 

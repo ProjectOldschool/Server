@@ -1,5 +1,7 @@
 package astraeus.net.packet.in;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import astraeus.game.model.Position;
@@ -35,7 +37,7 @@ public final class PickupGroundItemPacket implements Receivable {
     Position position = new Position(x, y, player.getPosition().getHeight());
 
     // get the item from the map
-    Item[] items = GameObjects.getGroundItems().get(position);
+    List<Item> items = GameObjects.getGroundItems().get(position);
 
     // validate it exists
     if (items == null) {
@@ -65,9 +67,11 @@ public final class PickupGroundItemPacket implements Receivable {
 
         @Override
         public void onReached() {
+        	System.out.println(GameObjects.getGroundItems().size());
           player.getInventory().add(it);
           player.queuePacket(new RemoveGroundItemPacket(it));
-          GameObjects.getGlobalObjects().remove(it);
+          GameObjects.getGroundItems().remove(it.getPosition(), Arrays.asList(it));
+          System.out.println(GameObjects.getGroundItems().size());
         }
 
       });      

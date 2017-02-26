@@ -1,7 +1,10 @@
 package astraeus.game.model.entity.mob.combat.task;
 
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -87,7 +90,7 @@ public final class MobDeathTask extends Task {
             
           });
           
-          GameObjects.getGroundItems().put(victim.getPosition().copy(), items.stream().toArray(Item[]::new));
+          GameObjects.getGroundItems().put(victim.getPosition().copy(), new ArrayList<Item>(items));
           
         });
         break;

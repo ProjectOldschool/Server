@@ -18,41 +18,43 @@ import astraeus.net.packet.out.AddObjectPacket;
  */
 public final class GameObjects {
 
-  
-  /**
-   * The list of global object spawned in the game world.
-   */
-  private static final List<GameObject> globalObjects = new ArrayList<>();
-  
-  /**
-   * A map of ground items and their positions in the world.
-   */
-  private static final Map<Position, Item[]> groundItems = new HashMap<>();
+	/**
+	 * The list of global object spawned in the game world.
+	 */
+	private static final List<GameObject> globalObjects = new ArrayList<>();
 
-  /**
-   * The method that creates global objects for a user.
-   *
-   * @param player The player to create the global objects for.
-   */
-  public static final void createGlobalObjects(Player player) {
-    globalObjects.stream().filter(Objects::nonNull).filter($it -> $it.getPosition().isWithinDistance(player.getPosition(), 32)).forEach($it -> player.queuePacket(new AddObjectPacket($it, true)));
-  }
+	/**
+	 * A map of ground items and their positions in the world.
+	 */
+	private static final Map<Position, List<Item>> groundItems = new HashMap<>();
 
-  /**
-   * The list of global object spawned in the game world.
-   */
-  @java.lang.SuppressWarnings("all")
-  @javax.annotation.Generated("lombok")
-  public static List<GameObject> getGlobalObjects() {
-    return GameObjects.globalObjects;
-  }
+	/**
+	 * The method that creates global objects for a user.
+	 *
+	 * @param player
+	 *            The player to create the global objects for.
+	 */
+	public static final void createGlobalObjects(Player player) {
+		globalObjects.stream().filter(Objects::nonNull)
+				.filter($it -> $it.getPosition().isWithinDistance(player.getPosition(), 32))
+				.forEach($it -> player.queuePacket(new AddObjectPacket($it, true)));
+	}
 
-  /**
-   * A map of ground items and their positions in the world.
-   */
-  @java.lang.SuppressWarnings("all")
-  @javax.annotation.Generated("lombok")
-  public static Map<Position, Item[]> getGroundItems() {
-    return GameObjects.groundItems;
-  }
+	/**
+	 * The list of global object spawned in the game world.
+	 */
+	@java.lang.SuppressWarnings("all")
+	@javax.annotation.Generated("lombok")
+	public static List<GameObject> getGlobalObjects() {
+		return GameObjects.globalObjects;
+	}
+
+	/**
+	 * A map of ground items and their positions in the world.
+	 */
+	@java.lang.SuppressWarnings("all")
+	@javax.annotation.Generated("lombok")
+	public static Map<Position, List<Item>> getGroundItems() {
+		return GameObjects.groundItems;
+	}
 }
